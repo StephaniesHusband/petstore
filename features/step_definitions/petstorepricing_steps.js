@@ -1,10 +1,6 @@
 var {defineSupportCode} = require("cucumber");
 
 defineSupportCode(function({Given, When, Then}) {
-   Given(/^a (.*) costs (.*)/, function(pet, cost) {
-      return this.petCosts(pet, cost);
-   });
-
    When(/^I enter (.*) and search for price$/, function(pet) {
       return this.iEnterPetAndSearchForPrice(pet);
    });
@@ -13,8 +9,8 @@ defineSupportCode(function({Given, When, Then}) {
       return this.whenIorder(count, pet);
    });
 
-   Then(/^the result should be (.*) dollars/, function(cost) {
-      return this.theResultShouldBe(cost);
+   Given(/^a (.*) costs (.*)/, function(pet, cost) {
+      return this.petCosts(pet, cost);
    });
 
    Given(/^a customer has (.*) (.*) off$/, function(amount, type) {
@@ -25,19 +21,19 @@ defineSupportCode(function({Given, When, Then}) {
       return this.setTax(tax);
    });
 
-   Given(/^a (.*) is (.*)$/, function(pet, clazz) {
-      return "pending";
+   Given(/^a (.*) is (.*)$/, function(pet, characteristic) {
+      return this.setPetCharacteristic(pet, characteristic);
    });
 
-   Given(/^you have to be (.*) years old to buy a (.*) animal$/, function() {
-      return "pending";
+   Given(/^you have to be (.*) years old to buy a (.*) animal$/, function(age, characteristic) {
+      return this.setCharacteristicAge(characteristic, age);
    });
 
-   Given(/^the customer is (.*) years old$/, function() {
-      return "pending";
+   Given(/^the customer is (.*) years old$/, function(age) {
+      return this.setCustomerAge(age);
    });
 
-   Then("the result should be {stringInDoubleQuotes}", function(string) {
-      return "pending";
+   Then(/^the result should be "?([^"]*)"?/, function(result) {
+      return this.theResultShouldBe(result);
    });
 });
