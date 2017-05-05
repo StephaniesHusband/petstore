@@ -29,6 +29,10 @@ PetstorePricingSteps.prototype.setDiscount = function(amount, type) {
    return psp.setDiscount(amount, type);
 };
 
+PetstorePricingSteps.prototype.setTax = function(tax) {
+   return psp.setTax(tax);
+};
+
 //--------------
 defineSupportCode(function({setWorldConstructor}) {
    setWorldConstructor(PetstorePricingSteps)

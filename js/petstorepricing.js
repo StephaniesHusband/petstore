@@ -14,6 +14,10 @@ PetstorePricing.prototype.getPetCost = function(pet) {
    return this.petCosts[pet];
 };
 
+PetstorePricing.prototype.setTax = function(tax) {
+   return this.taxRate = parseFloat(tax);
+};
+
 PetstorePricing.prototype.setDiscount = function(amount, type) {
    this.orderDiscount = {
       amount: parseFloat(amount),
@@ -41,6 +45,10 @@ PetstorePricing.prototype.getTotalCost = function() {
       else if (this.orderDiscount.type === "dollars") {
          total = total - this.orderDiscount.amount;
       }
+   }
+
+   if (this.taxRate) {
+      total = total + (total * (this.taxRate/100));
    }
 
    return total;

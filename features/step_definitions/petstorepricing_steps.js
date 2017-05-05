@@ -22,7 +22,7 @@ defineSupportCode(function({Given, When, Then}) {
    });
 
    Given(/^the tax on animals is (.*) percent$/, function(tax) {
-      return "pending";
+      return this.setTax(tax);
    });
 
    Given(/^a (.*) is (.*)$/, function(pet, clazz) {
